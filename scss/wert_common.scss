@@ -1,0 +1,221 @@
+@charset "utf-8";
+@import 'reset';
+$viewport : 360;
+@function vw($pixels) {
+    @return #{
+        ($pixels * 100) / $viewport
+    }vw;
+}
+
+
+body {
+    font-family: 'Abhaya Libre', serif;
+    overflow-x: hidden;
+}
+header {
+    max-width: 1440px;
+    margin:0 auto;
+    padding:54px 110px;
+    box-sizing: border-box;
+}
+main {    
+    margin:76px auto 0;
+    max-width: 1440px;    
+    display: flex;
+    flex-wrap: wrap;
+    color: #000;
+    padding:0 110px 577px;
+    position: relative;
+    box-sizing: border-box;
+}
+.main-txt {
+    width: 585px;
+    .t1 {
+        font-size: 65px;
+        line-height: 77px;
+    }
+}
+.contact-us {
+    margin-left: auto;
+    .t1 {
+        font-size: 20px;
+        line-height: 24px;
+    }
+    &__link {
+        display: flex;
+        width: 170px;
+        height: 52px;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        margin-top: 50px;
+        background-color: #FFE605;
+        color:#000;
+        transition: all .3s;
+        &:hover {
+            text-decoration: none;
+            box-shadow: 1px 5px 5px rgba(0,0,0,0.3);
+        }
+    }
+}
+.img-box {
+    position: absolute;
+    right: 110px;
+    bottom:90px;
+    z-index: -2;
+}
+.info-wrap {
+    position: absolute;
+    left: 110px;
+    bottom:90px;
+    display: flex;
+    gap: 43px;
+    .txt-wrap {
+        width: 300px;
+        height: 255px;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        background-color: #FFE600;
+        position: relative;
+        &::before {
+            content: '';
+            display: block;
+            width: 253px;
+            height: 253px;
+            background-color: #000;
+            position: absolute;
+            left: -12px;
+            top:-12px;
+            z-index: -1;
+        }
+    }
+    .t1 {
+        font-size: 34px;
+        line-height: 40px;
+    }
+    .t2 {
+        margin-top: auto;
+        font-size: 16px;
+        line-height: 19px;
+    }
+}
+.pc_br {
+    display: block;
+}
+.m_br {
+    display: none;
+}
+.highlight {
+    display: inline-block;
+    position: relative;
+    &::before {
+        content: '';
+        width: 100%;
+        height: 19px;
+        position: absolute;
+        left: 0;
+        bottom:10px;
+        background-color: #FFE605;
+        z-index: -1;
+    }
+}
+@media screen and (max-width:1100px) {
+    .highlight {
+        &::before {
+            height: vw(8);
+            bottom: vw(10);
+        }
+    }
+    .pc_br {
+        display: none;
+    }
+
+    .m_br {
+        display: block;
+    }
+    /* 모바일 */
+    header {
+        max-width: 100%;
+        padding: 28px 24px;
+        img {
+            width: vw(127);
+        }
+    }
+
+    main {
+        margin: vw(20) auto 0;
+        max-width: 100%;
+        padding: 0 0 vw(70);
+    }
+    .main-txt {
+        order: 0;
+        width: 100%;
+        padding:vw(20);
+        .t1 {
+            font-size:vw(36);
+            line-height: vw(42);
+        }
+    }
+    .contact-us {
+        order: 2;
+        margin-left: 0;
+        padding:vw(50) vw(20) vw(80);
+
+        .t1 {
+            font-size: vw(15);
+            line-height: vw(18);
+        }
+
+        &__link {
+            width: vw(102);
+            height: vw(37);
+            font-size: vw(16);
+            margin-top: vw(32);
+            
+        }
+    }
+    
+    .img-box {
+        position: static;
+        order: 1;
+        z-index: -2;
+        width: 100%;
+        img {
+            width: 100%;
+        }
+    }
+    .info-wrap {
+        position: static;
+        display: block;
+        order: 3;
+        padding:0 vw(20) 0 vw(35);
+        .txt-wrap {
+            width: vw(298);
+            height: vw(253);
+            padding: vw(16);
+            &::before {
+                content: '';
+                display: block;
+                width: vw(253);
+                height: vw(253);
+                left: vw(-12);
+                top: vw(-12);
+            }
+            & + .txt-wrap {
+                margin-top: vw(33);
+            }
+        }
+
+        .t1 {
+            font-size: 34px;
+            line-height: 40px;
+        }
+
+        .t2 {
+            margin-top: auto;
+            font-size: 16px;
+            line-height: 19px;
+        }
+    }
+}
